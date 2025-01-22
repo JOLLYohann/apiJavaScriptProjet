@@ -4,31 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinéma</title>
+    <title>Le Petit Ecran</title>
     <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="DALLE_2025-01-22_11.33.34_-_Un_favicon_minimaliste_inspire_du_logo_fourni_pour_un_cinema_avec_les_initiales_LPE._Le_design_conserve_le_style_luxueux_en_utilisant_une_seule_lettre.webp">
 </head>
 
-<body>
+<body class="dark">
     <header>
-        <button>
-            darkmode
-        </button>
+        <img src="DALLE_2025-01-22_11.33.34_-_Un_favicon_minimaliste_inspire_du_logo_fourni_pour_un_cinema_avec_les_initiales_LPE._Le_design_conserve_le_style_luxueux_en_utilisant_une_seule_lettre.webp" alt="Icone Ciné">
         <h1>
-            Ciné
+            Le Petit Ecran
         </h1>
+        <div class="boutton">
+        <button class="bouttondark">Activer le mode sombre</button>
         <a href="search.html">
-            <button>
+            <button class="bouttonSearch">
                 search
             </button>
+        </div>
         </a>
     </header>
-    <div>
-        <h2>
-            Nos films
-        </h2>
-        <!-- inserer des films -->
+    <h2>
+        Nos films
+    </h2>
+    <div class="swiper">
+        <div class="swiper-wrapper">  
+        </div>
+        </div>
+        <div>
+        <!-- insérer des films -->
     </div>
-    <script type="text/javascript" src="index.js"></script>
-</body>
 
+    <footer>
+        <p>&copy; 2025 Le Petit Ecran - Tous droits réservés</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F%3Flocale%3Dfr_FR"><i
+                    class="fa-brands fa-facebook"></i>Facebook</a>
+            <a href="https://www.instagram.com/titoune_tatacailler/"><i class="fa-brands fa-instagram"></i>Instagram</a>
+            <a href="https://x.com/?lang=fr"><i class="fa-brands fa-x-twitter"></i>Twitter</a>
+        </div>
+    </footer>
+</body>
 </html>
