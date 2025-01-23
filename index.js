@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
             boutton.textContent = "Activer le mode sombre";
         }
     }
-
+    
     boutton.addEventListener('click', toggleDarkMode);
 
-    async function getTendancyMovie(movie) {
+    async function tendancyMovieDetails(movie) {
         try {
             const response = await fetch(`https://www.omdbapi.com/?apikey=929ff8b4${movie}`, {
                 method: 'GET',
@@ -51,7 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div>${data.Title}</div>
                 `;
 
-                swiperWrapper.appendChild(slide);
+                swiperWrapper.appendChild(slide); 
+                
+                slide.addEventListener('click', () => {
+                    window.location.href = `movie.html?movieId=${data.imdbID}`;
+                });
             }
 
         } catch (error) {
@@ -60,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    carrousselMovies.forEach(movie => getTendancyMovie(movie));
+    carrousselMovies.forEach(movie => tendancyMovieDetails(movie));
 
     setTimeout(() => {
         new Swiper('.swiper', {
