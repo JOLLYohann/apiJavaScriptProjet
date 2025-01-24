@@ -91,17 +91,20 @@ header .buttons {
     width: 75px;
     border: none;
     border-radius: 5px;
+    
 }
 
 .bouttonSearch input {
 
     padding: 10px;
     font-size: 1em;
+
 }
 
 h2 {
     font-size: 1.5em;
     margin-left: 20px;
+    margin-bottom: 20px;
 }
 
 footer {
