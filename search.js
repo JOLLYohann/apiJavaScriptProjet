@@ -1,36 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const headers = {
+        'Accept': 'application/json'
+    };
     const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
     const resultat = document.getElementById('results');
     let moviesData = [];
 
-    searchButton.addEventListener('click', async () => {
-        const query = searchInput.value.trim();
-        if (query) {
-            try {
-                const response = await fetch(`https://www.omdbapi.com/?apikey=929ff8b4&s=${query}`);
-                if (!response.ok) throw new Error('Erreur de chargement des données');
-
-                const data = await response.json();
-                displayResults(data);
-            } catch (error) {
-                console.error(error);
-                alert('Impossible de charger les données.');
-            }
-        }
-    });
-
-    searchInput.addEventListener('input', () => {
+    searchInput.addEventListener('input', async () => {
+        console.log('test');
         const query = searchInput.value.trim().toLowerCase();
-        const filteredMovies = moviesData.filter(movie =>
-            movie.Title.toLowerCase().includes(query)
-        );
-        displayResults(filteredMovies);
+        const response = await fetch(`https://www.omdbapi.com/?apikey=929ff8b4&s=${query}`, {
+            method: 'GET',
+            headers: headers
+        });
+        const data = await response.json();
+        displayResults(data);
     });
 
     function displayResults(movies) {
         resultat.innerHTML = '';
-        if (movies.Search.length > 0) {
+        if (movies.Search) {
             movies.Search.forEach((movie) => {
                 const movieFind = document.createElement('div');
                 const movieElement = document.createElement('div');

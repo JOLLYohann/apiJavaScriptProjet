@@ -115,6 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div>${movie.Title} (${movie.Year})</div>
             `;
             movies2024Container.appendChild(movieElement);
+            
+            movieElement.addEventListener('click', () => {
+                window.location.href = `movie.html?movieId=${movie.imdbID}`;
+            });
         }
     }
 
