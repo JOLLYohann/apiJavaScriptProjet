@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const headers = {
         'Accept': 'application/json'
     };
+    const body = document.querySelector('body');
     const boutton = document.querySelector('.bouttondark');
     const searchInput = document.getElementById('searchInput');
     const moreButton = document.querySelector('.moreButton');
@@ -23,8 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     boutton.addEventListener('click', toggleDarkMode);
 
     async function searchMovie(pageNumber) {
-        console.log(pageNumber);
-        console.log('test');
         const query = searchInput.value.trim().toLowerCase();
         const response = await fetch(`https://www.omdbapi.com/?apikey=929ff8b4&s=${query}&page=${pageNumber}`, {
             method: 'GET',
@@ -36,12 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function newSearch() {
         pageCount = 1;
-        console.log(pageCount);
         searchMovie(pageCount);
     }
 
     function moreMovie() {
-        console.log(pageCount);
         pageCount = pageCount+1 ;
         searchMovie(pageCount);
     }

@@ -49,21 +49,20 @@ header .buttons {
 }
 
 .swiper {
-    max-width: 80%;
-    height: 70%;
+    max-width: 60%;
+    height: 80%;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0.7 5px 10px gold;
    
 }
 .swiper img {
-    width: 350px;
-    height: 500px;
+    width: 40%;
+    height: 80%;
     object-fit: cover;
     border-radius: 10px;
     margin-top: 20px;
-    margin-left: 40%;
-    margin-right: 40%;
+    margin-left: 30%;
 }
 .swiper-slide div {
     font-size: 20px;
@@ -138,7 +137,7 @@ h2 {
 }
 
 footer {
-    position: absolute; 
+    position: fixed; 
     bottom: 0;
     background-color: #222;
     color: white;
@@ -147,7 +146,7 @@ footer {
     width: 100%;
     position: relative;
     bottom: 0;
-    margin-top: 20px;
+    margin-top: 25%;
 
 }
 

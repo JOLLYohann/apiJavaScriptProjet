@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const headers = {
         'Accept': 'application/json'
     };
+    const body = document.querySelector('body');
     const boutton = document.querySelector('.bouttondark');
 
     function toggleDarkMode() {
