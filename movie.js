@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     let h2 = document.querySelector('h2');
+    const movieInformations = document.querySelector('.movie-informations');
 
     async function movieDetails(movie) {
         try {
@@ -15,13 +16,24 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) throw new Error('Erreur de chargement des données');
             const data = await response.json();
 
-            if (data.Poster) {
-                h2.textContent = data.Title;
+            const information = document.createElement('div');
+            const poster = document.createElement('div');
+            information.classList.add('movie-informations');
+            poster.classList.add('movie-informations');
 
-                const slide = document.createElement('div');
-
-                slide.innerHTML = `<img src="${data.Poster}" alt="${data.Title}">`;
-            }
+            h2.textContent = data.Title;
+            poster.innerHTML = `<img src="${data.Poster}" alt="${data.Title}">`;
+            information.innerHTML =
+            `<p>Résumé: <br> ${data.Plot} <br></p>
+            <p>Durée: ${data.Runtime}</p>
+            <p>Année de sortie: ${data.Year}</p>
+            <p>Genre: ${data.Genre}</p>
+            <p>Acteurs: ${data.Actors}</p>
+            <p>Réalisateur: ${data.Director}</p>
+            <p>Auteur: ${data.Writer}</p>
+            <p>Note: ${data.Metascore}%</p>`;
+            movieInformations.appendChild(poster);
+            movieInformations.appendChild(information);
 
         } catch (error) {
             console.error(error);
