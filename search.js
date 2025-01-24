@@ -11,10 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const response = await fetch(`https://www.omdbapi.com/?apikey=929ff8b4&s=${query}`);
                 if (!response.ok) throw new Error('Erreur de chargement des données');
 
-
-const data = await response.json();
-                moviesData = data.Search || [];
-                displayResults(moviesData);
+                const data = await response.json();
+                displayResults(data);
             } catch (error) {
                 console.error(error);
                 alert('Impossible de charger les données.');
@@ -24,7 +22,7 @@ const data = await response.json();
 
     searchInput.addEventListener('input', () => {
         const query = searchInput.value.trim().toLowerCase();
-        const filteredMovies = moviesData.filter(movie => 
+        const filteredMovies = moviesData.filter(movie =>
             movie.Title.toLowerCase().includes(query)
         );
         displayResults(filteredMovies);
@@ -32,16 +30,23 @@ const data = await response.json();
 
     function displayResults(movies) {
         resultat.innerHTML = '';
-        if (movies.length > 0) {
-            movies.forEach((movie) => {
+        if (movies.Search.length > 0) {
+            movies.Search.forEach((movie) => {
+                const movieFind = document.createElement('div');
                 const movieElement = document.createElement('div');
-                movieElement.classList.add('movie');
-                
+                movieElement.classList.add('movieElement');
+
                 movieElement.innerHTML = `
                     <img src="${movie.Poster}" alt="${movie.Title}">
                     <div>${movie.Title} (${movie.Year})</div>
                 `;
-                resultat.appendChild(movieElement);
+                
+                movieFind.appendChild(movieElement);
+                resultat.appendChild(movieFind);
+                
+                movieFind.addEventListener('click', () => {
+                    window.location.href = `movie.html?movieId=${movie.imdbID}`;
+                });
             });
         } else {
             resultat.innerHTML = '<p>Aucun résultat pour votre recherche.</p>';
