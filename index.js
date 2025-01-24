@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.querySelector('body');
     const boutton = document.querySelector('.bouttondark');
     const swiperWrapper = document.querySelector('.swiper-wrapper');
+    const movies2024Container = document.getElementById('movies2024');
 
     function toggleDarkMode() {
         if (body.classList.contains('light')) {
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             boutton.textContent = "Activer le mode sombre";
         }
     }
-    
+
     boutton.addEventListener('click', toggleDarkMode);
 
     async function tendancyMovieDetails(movie) {
@@ -76,4 +77,46 @@ document.addEventListener('DOMContentLoaded', () => {
             speed: 1000,
         });
     }, 1000);
+
+    async function fetchMovies2024() {
+        const movies2024 = [
+            "&i=tt30217143",  // Trouble
+            "&i=tt11097384",  // Spaceman
+            "&i=tt32281647",  // Elevation
+            "&i=tt15314262",  // The Beekeeper
+            "&i=tt32373672",  // L'Heureuse Élue
+            "&i=tt4978420",  // Borderlands
+            "&i=tt15552142",  // Caddo Lake
+            "&i=tt24807110",  // Don't Move
+            "&i=tt10128846"   // Megalopolis
+        ];
+
+        try {
+            for (const movie of movies2024) {
+                const response = await fetch(`https://www.omdbapi.com/?apikey=929ff8b4${movie}`);
+                if (!response.ok) throw new Error('Erreur de chargement des données');
+
+                const data = await response.json();
+                displayMovies2024(data);
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Impossible de charger les données.');
+        }
+    }
+
+    function displayMovies2024(movie) {
+        if (movie.Poster) {
+            const movieElement = document.createElement('div');
+            movieElement.classList.add('movie');
+
+            movieElement.innerHTML = `
+                <img src="${movie.Poster}" alt="${movie.Title}">
+                <div>${movie.Title} (${movie.Year})</div>
+            `;
+            movies2024Container.appendChild(movieElement);
+        }
+    }
+
+    fetchMovies2024();
 });
