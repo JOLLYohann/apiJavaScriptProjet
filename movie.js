@@ -2,6 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const headers = {
         'Accept': 'application/json'
     };
+    const boutton = document.querySelector('.bouttondark');
+
+    function toggleDarkMode() {
+        if (body.classList.contains('light')) {
+            body.classList.add('dark');
+            body.classList.remove('light');
+            boutton.textContent = "Activer le mode clair";
+        } else {
+            body.classList.add('light');
+            body.classList.remove('dark');
+            boutton.textContent = "Activer le mode sombre";
+        }
+    }
+
+    boutton.addEventListener('click', toggleDarkMode);
 
     let h2 = document.querySelector('h2');
     const movieInformations = document.querySelector('.movie-informations');
